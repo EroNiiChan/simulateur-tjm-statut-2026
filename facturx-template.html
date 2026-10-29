@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modèle Facture Conforme Factur-X 2026 | Freelance Tech</title>
+  <style>
+    body {
+      background: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0f172a;
+      padding: 30px 15px;
+      margin: 0;
+    }
+    .invoice-card {
+      max-width: 800px;
+      background: white;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .badge-fx {
+      background: #0284c7;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .address-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 24px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background: #f1f5f9;
+      text-align: left;
+    }
+    .totals-box {
+      margin-left: auto;
+      width: 280px;
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .total-ttc {
+      font-size: 1.15rem;
+      font-weight: 800;
+      border-top: 2px solid #0f172a;
+      padding-top: 6px;
+      margin-top: 6px;
+    }
+    .legal-footer {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .no-print {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .invoice-card { box-shadow: none; border: none; padding: 0; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print">
+    <a href="index.html" style="color:#2563eb; text-decoration:none; font-weight:600;">← Retour au simulateur TJM</a>
+    <button class="btn" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+  </div>
+
+  <div class="invoice-card">
+    <div class="header-row">
+      <div>
+        <h1 style="font-size: 1.5rem; margin: 0; font-weight: 800;">FACTURE N° 2026-10-001</h1>
+        <div style="font-size: 0.85rem; color:#64748b; margin-top: 4px;">
+          Date d'émission : 29/10/2026<br>
+          Date d'échéance : 28/11/2026 (30 jours)
+        </div>
+        <span class="badge-fx">PROFIL FACTUR-X : BASIC (EN 16931)</span>
+      </div>
+      <div style="text-align: right; font-size: 0.88rem;">
+        <strong style="font-size:1.05rem;">JOHN DOE CONSEIL TECH</strong><br>
+        15 Boulevard Haussmann, 75009 Paris<br>
+        SIRET : 884 923 711 00018<br>
+        RCS Paris B 884 923 711<br>
+        N° TVA Intra : FR 48 884923711<br>
+        Code NAF : 6202A (Conseil en systèmes informatiques)
+      </div>
+    </div>
+
+    <div class="address-grid">
+      <div>
+        <strong style="font-size:0.95rem; display:block; margin-bottom:6px;">CLIENT DESTINATAIRE (B2B) :</strong>
+        <strong>ACME SOFTWARE SOLUTIONS SAS</strong><br>
+        <strong>N° SIREN OBLIGATOIRE 2026 : 512 890 123</strong><br>
+        N° TVA Intra : FR 33 512890123<br>
+        Adresse de facturation : 40 rue de Courcelles, 75008 Paris<br>
+        Lieu d'exécution de la mission : Télétravail & Paris 8e
+      </div>
+      <div>
+        <strong style="font-size:0.95rem; display:block; margin-bottom:6px;">MENTIONS OBLIGATOIRES RÉFORME 2026 :</strong>
+        • Nature de l'opération : <strong>Prestations de services</strong><br>
+        • Option fiscale : <strong>TVA d'après les débits</strong><br>
+        • Format technique : Hybride PDF/A-3 (contenant <code>factur-x.xml</code>)<br>
+        • Identifiant Chorus / PDP : 512890123
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description de la prestation</th>
+          <th style="text-align: center;">Quantité</th>
+          <th style="text-align: right;">Prix Unit. HT</th>
+          <th style="text-align: right;">Total HT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>Développement & Architecture Logicielle Fullstack</strong><br>
+            <span style="font-size:0.8rem; color:#64748b;">Conception API REST, audit sécurité et accompagnement sprint agile (Octobre 2026).</span>
+          </td>
+          <td style="text-align: center;">19 jours</td>
+          <td style="text-align: right;">600,00 €</td>
+          <td style="text-align: right;">11 400,00 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="totals-box">
+      <div class="totals-row">
+        <span>Total HT :</span>
+        <strong>11 400,00 €</strong>
+      </div>
+      <div class="totals-row">
+        <span>TVA (20,0%) :</span>
+        <span>2 280,00 €</span>
+      </div>
+      <div class="totals-row total-ttc">
+        <span>TOTAL TTC :</span>
+        <span>13 680,00 €</span>
+      </div>
+    </div>
+
+    <div style="background:#f8fafc; padding:12px; border-radius:6px; margin-top:20px; font-size:0.85rem;">
+      <strong>Coordonnées bancaires pour virement SEPA :</strong><br>
+      IBAN : FR76 3000 4012 3456 7890 1234 567 | BIC : BNPAFRPPXXX | Banque : BNP Paribas
+    </div>
+
+    <div class="legal-footer">
+      <strong>Mentions Légales & Pénalités :</strong> En cas de retard de paiement, une indemnité forfaitaire pour frais de recouvrement de 40 € est due de plein droit (Code de commerce art. D. 441-5), outre un intérêt de retard égal à 3 fois le taux d'intérêt légal. Pas d'escompte pour règlement anticipé. Fichier XML structuré conforme aux spécifications de la Direction Générale des Finances Publiques (DGFiP) et au standard européen EN 16931.
+    </div>
+  </div>
+</body>
+</html>

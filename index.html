@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur TJM 2026 : Micro-Entreprise vs EURL vs SASU | Calculateur Net Freelance & Factur-X</title>
+  <meta name="description" content="Simulateur TJM 2026 gratuit pour freelances tech en France : comparez votre revenu net en Micro-Entreprise, EURL et SASU avec les barèmes fiscaux et Urssaf 2026. Audit de conformité Factur-X inclus.">
+  <meta name="keywords" content="simulateur tjm, tjm freelance, sasu vs micro-entreprise, eurl vs sasu, calcul net freelance 2026, factur-x freelance, taux journalier moyen, impot societe freelance, are sasu freelance">
+  <meta name="author" content="EroNiiChan - Freelance Finance Lab">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eroniichan.github.io/simulateur-tjm-statut-2026/">
+  <meta property="og:title" content="Simulateur TJM 2026 : Micro-Entreprise vs EURL vs SASU + Réforme Factur-X">
+  <meta property="og:description" content="Calculez exactement votre salaire net dans la poche selon votre TJM, frais réels et statut juridique (Micro, EURL, SASU) avec les taux de cotisations 2026.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=80">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulateur TJM 2026 : Micro vs EURL vs SASU">
+  <meta name="twitter:description" content="Comparateur fiscal et social ultra-rapide pour freelances et indépendants tech en France. Barème 2026.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=80">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Simulateur TJM Freelance 2026 : Micro-Entreprise vs EURL vs SASU",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "description": "Calculateur financier comparant les statuts juridiques Micro-Entreprise, EURL à l'IS et SASU pour les freelances et consultants en France avec intégration de la réforme Factur-X 2026."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quel est le meilleur statut juridique pour un freelance tech en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le choix dépend du TJM et des frais réels. Pour un CA inférieur à 77 700 € sans beaucoup de frais, la Micro-Entreprise reste la plus simple. Pour un CA supérieur à 80 000 €, l'EURL à l'IS offre le meilleur ratio net dans la poche grâce à des cotisations TNS de ~45% du net. La SASU est idéale si vous bénéficiez de l'ARE (maintien du chômage à 100%) ou si vous privilégiez les dividendes avec la flat tax à 30%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelles sont les obligations de la réforme Factur-X pour les freelances en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "À partir du 1er septembre 2026, toutes les entreprises françaises, y compris les micro-entrepreneurs, doivent être en mesure de recevoir des factures électroniques au format Factur-X / structuré. L'obligation d'émission pour les TPE et micro-entreprises prend effet au 1er septembre 2027."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment cumuler l'ARE (chômage) et la SASU en 2026 ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En SASU à l'IS, le président non rémunéré (procès-verbal d'assemblée générale attestant de 0 € de rémunération) peut cumuler 100% de ses allocations de retour à l'emploi (ARE) versées par France Travail, tout en facturant ses clients et en laissant la trésorerie dans la société."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --emerald: #10b981;
+      --emerald-light: rgba(16, 185, 129, 0.15);
+      --amber: #f59e0b;
+      --amber-light: rgba(245, 158, 11, 0.15);
+      --purple: #8b5cf6;
+      --purple-light: rgba(139, 92, 246, 0.15);
+      --rose: #f43f5e;
+      --rose-light: rgba(244, 63, 94, 0.15);
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: rgba(37, 99, 235, 0.08);
+      --emerald: #059669;
+      --emerald-light: rgba(5, 150, 105, 0.08);
+      --amber: #d97706;
+      --amber-light: rgba(217, 119, 6, 0.08);
+      --purple: #7c3aed;
+      --purple-light: rgba(124, 58, 237, 0.08);
+      --rose: #e11d48;
+      --rose-light: rgba(225, 29, 72, 0.08);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.25s, color 0.25s;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Cross-sell Top Bar */
+    .cross-sell-bar {
+      background: linear-gradient(90deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      color: #e0e7ff;
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cross-sell-bar a {
+      color: #ffffff;
+      background: #4f46e5;
+      padding: 3px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .cross-sell-bar a:hover {
+      background: #6366f1;
+      transform: translateY(-1px);
+    }
+
+    /* Header */
+    header {
+      padding: 24px 0 20px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border-color: var(--card-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #fbbf24, #b45309);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 0 30px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Grid Layout */
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 28px;
+      margin: 30px 0 50px;
+    }
+
+    @media (max-width: 992px) {
+      .simulator-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Form Controls */
+    .input-group {
+      margin-bottom: 22px;
+    }
+
+    .input-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .input-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .input-val-badge {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 7px;
+      border-radius: 5px;
+      background: var(--card-border);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+      border: 2px solid white;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--card-border);
+      border-radius: 8px;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+
+    .toggle-info {
+      font-size: 0.88rem;
+    }
+
+    .toggle-info span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-round {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #4b5563;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider-round:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider-round {
+      background-color: var(--emerald);
+    }
+
+    input:checked + .slider-round:before {
+      transform: translateX(20px);
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--card-border);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    select:focus, input[type="number"]:focus {
+      border-color: var(--primary);
+    }
+
+    /* Results section */
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .summary-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .statut-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .statut-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    }
+
+    .statut-card.recommended {
+      border: 2px solid var(--emerald);
+      background: linear-gradient(180deg, var(--emerald-light) 0%, var(--card-bg) 40%);
+    }
+
+    .statut-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .statut-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .badge-rec {
+      background: var(--emerald);
+      color: white;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-warn {
+      background: var(--rose);
+      color: white;
+      font-size: 0.7rem;
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .net-monthly {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin: 8px 0 2px;
+    }
+
+    .net-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .statut-specs {
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 12px;
+      margin-top: 8px;
+    }
+
+    .spec-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .spec-line span:last-child {
+      font-weight: 600;
+    }
+
+    /* Comparison Table */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 24px;
+    }
+
+    table.comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    table.comp-table th, table.comp-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    table.comp-table th {
+      background: var(--card-border);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    table.comp-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .highlight-net {
+      font-weight: 800;
+      color: var(--emerald);
+      font-size: 1rem;
+    }
+
+    /* Visual Bars */
+    .bar-chart-container {
+      margin-top: 24px;
+      padding: 18px;
+      background: var(--card-border);
+      border-radius: 8px;
+    }
+
+    .chart-bar-group {
+      margin-bottom: 14px;
+    }
+
+    .chart-bar-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .chart-bar-track {
+      width: 100%;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 7px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .chart-bar-fill {
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    /* Factur-X Section */
+    .facturx-box {
+      margin: 40px 0;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid #334155;
+      border-radius: var(--radius);
+      padding: 30px;
+      position: relative;
+    }
+
+    .facturx-badge {
+      background: #0284c7;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .check-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .check-icon {
+      color: var(--emerald);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Upsell Section - €9 Pack Contrats */
+    .upsell-section {
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 100%);
+      border: 2px solid #6366f1;
+      border-radius: 16px;
+      padding: 40px 30px;
+      margin: 50px 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.3);
+    }
+
+    .upsell-badge-pill {
+      background: #6366f1;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .upsell-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .upsell-sub {
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 30px;
+    }
+
+    .contracts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .contract-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .contract-card h4 {
+      color: #93c5fd;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .contract-card p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .price-box {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .price-original {
+      text-decoration: line-through;
+      color: #94a3b8;
+      font-size: 1.5rem;
+    }
+
+    .price-deal {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #facc15;
+    }
+
+    .price-tag {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      max-width: 580px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin: 50px 0;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    /* AI Act Cross Banner Box */
+    .ai-act-banner {
+      background: linear-gradient(135deg, #1e1b4b, #2e1065);
+      border: 1px solid #7c3aed;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .ai-act-text h3 {
+      font-size: 1.25rem;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .ai-act-text p {
+      color: #c4b5fd;
+      font-size: 0.9rem;
+      max-width: 650px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Print styles */
+    @media print {
+      .cross-sell-bar, .nav-actions, .upsell-section, .ai-act-banner, .theme-toggle, .btn-gold {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- Cross-sell sticky top bar -->
+  <div class="cross-sell-bar">
+    <span>⚖️ <strong>Freelance Tech & IA en 2026 :</strong> Vos algorithmes et missions clients sont-ils conformes aux nouvelles sanctions européennes ?</span>
+    <a href="https://eroniichan.github.io/eu-ai-act-compliance-toolkit/" target="_blank" rel="noopener">Consulter l'Audit Gratuit EU AI Act 2026 →</a>
+  </div>
+
+  <!-- Main Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo-group">
+        <div class="logo-badge">FR</div>
+        <div>
+          <strong style="font-size: 1.15rem; display: block;">Simulateur TJM 2026</strong>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Micro-Entreprise • EURL • SASU • Factur-X</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" onclick="exportReport()" title="Imprimer ou sauvegarder le bilan en PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+          Export PDF
+        </button>
+        <button class="btn btn-gold" onclick="openPackModal()">
+          ⭐ Pack Contrats 9€
+        </button>
+        <button class="theme-toggle" id="themeToggleBtn" aria-label="Basculer le thème clair/sombre" onclick="toggleTheme()">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">🇫🇷 Barèmes fiscaux & Urssaf 2026 vérifiés</div>
+      <h1>Simulateur TJM & Statut Freelance 2026</h1>
+      <p>Comparez instantanément votre rémunération nette, vos cotisations sociales et votre impôt entre la <strong>Micro-Entreprise</strong>, l'<strong>EURL à l'IS</strong> et la <strong>SASU</strong>. Préparez la réforme obligatoire <strong>Factur-X</strong>.</p>
+    </section>
+
+    <!-- Interactive Simulator Grid -->
+    <div class="simulator-grid">
+
+      <!-- Left Sidebar: Controls -->
+      <aside class="card">
+        <div class="card-title">
+          <span>Paramètres de simulation</span>
+          <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.75rem;" onclick="resetDefaults()">Réinitialiser</button>
+        </div>
+
+        <!-- TJM -->
+        <div class="input-group">
+          <div class="input-label-row">
+            <label class="input-label" for="tjmInput">TJM (€ HT / jour)</label>
+            <span class="input-val-badge" id="tjmDisplay">550 €</span>
+          </div>
+          <input type="range" id="tjmInput" min="200" max="1600" step="25" value="550" oninput="updateCalculations()">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+            <span>Junior (250€)</span>
+            <span>Senior (600€)</span>
+            <span>Staff/Lead (1200€+)</span>
+          </div>
+        </div>
+
+        <!-- Jours travaillés -->
+        <div class="input-group">
+          <div class="input-label-row">
+            <label class="input-label" for="daysInput">Jours facturés par an</label>
+            <span class="input-val-badge" id="daysDisplay">210 j</span>
+          </div>
+          <input type="range" id="daysInput" min="100" max="250" step="5" value="210" oninput="updateCalculations()">
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+            <span>Mi-temps (120j)</span>
+            <span>Standard (210j = 5 sem. CP)</span>
+            <span>Max (240j)</span>
+          </div>
+        </div>
+
+        <!-- Frais pro -->
+        <div class="input-group">
+          <div class="input-label-row">
+            <label class="input-label" for="fraisInput">Frais professionnels réels (€ HT/an)</label>
+            <span class="input-val-badge" id="fraisDisplay">6 000 €</span>
+          </div>
+          <input type="range" id="fraisInput" min="1000" max="25000" step="500" value="6000" oninput="updateCalculations()">
+          <span style="font-size:0.75rem; color:var(--text-muted);">Matériel Mac/PC, coworking, SaaS, RC Pro, téléphone, etc.</span>
+        </div>
+
+        <!-- Situation ARE (Chômage France Travail) -->
+        <div class="toggle-row" onclick="toggleCheckbox('areCheck')">
+          <div class="toggle-info">
+            <strong>Maintien ARE (France Travail)</strong>
+            <span>Indemnités chômage mensuelles maintenues</span>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="areCheck" onchange="updateCalculations()">
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <!-- ARE Amount Input (Conditional) -->
+        <div class="input-group" id="areAmountGroup" style="display:none; padding:10px; background:rgba(59,130,246,0.06); border-radius:8px; border:1px solid var(--primary-light);">
+          <div class="input-label-row">
+            <label class="input-label" for="areAmountInput">Montant mensuel ARE net (€)</label>
+            <span class="input-val-badge" id="areAmountDisplay">2 200 €</span>
+          </div>
+          <input type="range" id="areAmountInput" min="1000" max="4200" step="50" value="2200" oninput="updateCalculations()">
+          <span style="font-size:0.75rem; color:var(--text-muted);">Versement France Travail à 100% si salaire SASU = 0€.</span>
+        </div>
+
+        <!-- ACRE 1ère année -->
+        <div class="toggle-row" onclick="toggleCheckbox('acreCheck')">
+          <div class="toggle-info">
+            <strong>Bénéficiaire ACRE (1ère année)</strong>
+            <span>Exonération partielle de cotisations sociales</span>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="acreCheck" onchange="updateCalculations()">
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <!-- Versement Libératoire Micro -->
+        <div class="toggle-row" onclick="toggleCheckbox('versLibCheck')">
+          <div class="toggle-info">
+            <strong>Versement Libératoire IR (Micro)</strong>
+            <span>2.2% forfaitaire (selon RFR N-2)</span>
+          </div>
+          <label class="switch" onclick="event.stopPropagation()">
+            <input type="checkbox" id="versLibCheck" onchange="updateCalculations()">
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <!-- Tranche TMI -->
+        <div class="input-group">
+          <label class="input-label" for="tmiSelect" style="display:block; margin-bottom:6px;">Tranche Marginale d'Imposition (TMI IR)</label>
+          <select id="tmiSelect" onchange="updateCalculations()">
+            <option value="0">0% (Revenus du foyer < 11 294 €)</option>
+            <option value="11">11% (Revenus entre 11 295 € et 28 797 €)</option>
+            <option value="30" selected>30% (Standard cadre/tech : 28 798 € à 82 341 €)</option>
+            <option value="41">41% (82 342 € à 177 106 €)</option>
+            <option value="45">45% (Plus de 177 106 €)</option>
+          </select>
+        </div>
+
+        <!-- Frais de comptabilité Société -->
+        <div class="input-group" style="margin-bottom:0;">
+          <label class="input-label" for="comptaInput" style="display:block; margin-bottom:6px;">Comptabilité & Juridique Société (EURL/SASU)</label>
+          <select id="comptaInput" onchange="updateCalculations()">
+            <option value="1400">Expert-comptable en ligne (ex: Dougs, Indy ~1 400 €/an)</option>
+            <option value="2000" selected>Cabinet comptable classique (~2 000 €/an)</option>
+            <option value="3000">Comptable + Commissaire aux comptes (~3 000 €/an)</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Right Column: Comparison Cards & Details -->
+      <section>
+        <!-- Chiffre d'Affaires Announcement -->
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:16px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span style="font-size:0.85rem; color:var(--text-muted); display:block;">Chiffre d'Affaires Brut Annuel (HT)</span>
+            <strong style="font-size:1.6rem; color:var(--primary);" id="totalCADisplay">115 500 €</strong>
+          </div>
+          <div id="seuilMicroAlert" style="display:none;">
+            <span class="badge-warn">⚠️ Seuil Micro dépassé (77 700 €)</span>
+          </div>
+          <div>
+            <span style="font-size:0.85rem; color:var(--text-muted); display:block;">Recommandation Algorithmique 2026</span>
+            <span class="badge-rec" id="recommendationBadge">Analyse en cours...</span>
+          </div>
+        </div>
+
+        <!-- 3 Comparison Cards -->
+        <div class="summary-cards">
+          <!-- Card 1: Micro-Entreprise -->
+          <div class="statut-card" id="cardMicro">
+            <div>
+              <div class="statut-header">
+                <div>
+                  <div class="statut-name">Micro-Entreprise</div>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">BNC Prestations</span>
+                </div>
+                <span id="badgeMicroPlafond" style="display:none;" class="badge-warn">Plafond Dépassé</span>
+              </div>
+              <div class="net-monthly" id="microNetMonthly">4 650 €</div>
+              <div class="net-label">Net mensuel après impôts</div>
+
+              <div class="statut-specs">
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Net annuel net d'IR</span>
+                  <span id="microNetAnnual">55 800 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Cotisations Urssaf</span>
+                  <span id="microUrssaf">24 717 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Frais réels déductibles</span>
+                  <span style="color:var(--rose);">0 € (Forfait 34%)</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Impôt sur le Revenu</span>
+                  <span id="microIR">12 400 €</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); border-top:1px dashed var(--card-border); padding-top:8px;">
+              ⚡ <strong>Avantage :</strong> Aucune compta obligatoire, mise en place immédiate.<br>
+              ⚠️ <strong>Limite :</strong> Plafond strict 77 700€ et frais réels non déductibles.
+            </div>
+          </div>
+
+          <!-- Card 2: EURL à l'IS -->
+          <div class="statut-card recommended" id="cardEURL">
+            <div>
+              <div class="statut-header">
+                <div>
+                  <div class="statut-name">EURL (IS)</div>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Gérance majoritaire TNS</span>
+                </div>
+                <span class="badge-rec" id="eurlBadgeLabel">Top Rentabilité</span>
+              </div>
+              <div class="net-monthly" id="eurlNetMonthly" style="color:var(--emerald);">5 320 €</div>
+              <div class="net-label">Net mensuel après impôts</div>
+
+              <div class="statut-specs">
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Net annuel net d'IR</span>
+                  <span id="eurlNetAnnual">63 840 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Cotisations TNS (~45%)</span>
+                  <span id="eurlUrssaf">33 500 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Frais réels + Compta</span>
+                  <span id="eurlFraisTotal" style="color:var(--emerald);">- 8 000 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Impôt sur le Revenu</span>
+                  <span id="eurlIR">15 200 €</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); border-top:1px dashed var(--card-border); padding-top:8px;">
+              🏆 <strong>Le choix numéro 1</strong> des développeurs & consultants séniors (> 75k€ de CA) pour maximiser le cash.
+            </div>
+          </div>
+
+          <!-- Card 3: SASU à l'IS -->
+          <div class="statut-card" id="cardSASU">
+            <div>
+              <div class="statut-header">
+                <div>
+                  <div class="statut-name">SASU (IS)</div>
+                  <span style="font-size:0.75rem; color:var(--text-muted);" id="sasuSubLabel">Dividendes (Flat Tax 30%)</span>
+                </div>
+                <span class="badge-rec" id="sasuBadgeLabel" style="background:var(--purple); display:none;">Idéal ARE</span>
+              </div>
+              <div class="net-monthly" id="sasuNetMonthly">4 980 €</div>
+              <div class="net-label">Net mensuel après impôts</div>
+
+              <div class="statut-specs">
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Net annuel dans la poche</span>
+                  <span id="sasuNetAnnual">59 760 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Impôt Sociétés (IS)</span>
+                  <span id="sasuIS">17 250 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Prélèvement Flat Tax (30%)</span>
+                  <span id="sasuFlatTax">22 100 €</span>
+                </div>
+                <div class="spec-line">
+                  <span style="color:var(--text-muted);">Protection Retraite</span>
+                  <span id="sasuRetraiteLabel">Nulle si 100% div.</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); border-top:1px dashed var(--card-border); padding-top:8px;">
+              🛡️ <strong>Parfait avec l'ARE :</strong> 0€ salaire = maintien à 100% du chômage tout en capitalisant le CA.
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Visual Bars -->
+        <div class="bar-chart-container">
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:12px;">📊 Répartition du Chiffre d'Affaires Brut (Net vs Prélèvements Obligatoires)</div>
+          
+          <div class="chart-bar-group">
+            <div class="chart-bar-header">
+              <span>Micro-Entreprise</span>
+              <span id="barLabelMicro">Net: 55 800 € (48%)</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barMicroNet" class="chart-bar-fill" style="width: 48%; background: var(--primary);"></div>
+              <div id="barMicroTaxes" class="chart-bar-fill" style="width: 52%; background: var(--rose);"></div>
+            </div>
+          </div>
+
+          <div class="chart-bar-group">
+            <div class="chart-bar-header">
+              <span>EURL (IS - Gérance TNS)</span>
+              <span id="barLabelEURL">Net: 63 840 € (55%)</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barEURLNet" class="chart-bar-fill" style="width: 55%; background: var(--emerald);"></div>
+              <div id="barEURLTaxes" class="chart-bar-fill" style="width: 45%; background: var(--rose);"></div>
+            </div>
+          </div>
+
+          <div class="chart-bar-group">
+            <div class="chart-bar-header">
+              <span>SASU (IS - Optimisation Dividendes)</span>
+              <span id="barLabelSASU">Net: 59 760 € (52%)</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barSASUNet" class="chart-bar-fill" style="width: 52%; background: var(--purple);"></div>
+              <div id="barSASUTaxes" class="chart-bar-fill" style="width: 48%; background: var(--rose);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:center; gap:20px; font-size:0.78rem; color:var(--text-muted); margin-top:10px;">
+            <span style="display:inline-flex; align-items:center; gap:5px;"><span style="width:10px; height:10px; background:var(--emerald); border-radius:2px; display:inline-block;"></span> Net dans votre poche</span>
+            <span style="display:inline-flex; align-items:center; gap:5px;"><span style="width:10px; height:10px; background:var(--rose); border-radius:2px; display:inline-block;"></span> Cotisations Urssaf + Impôts + Frais</span>
+          </div>
+        </div>
+
+        <!-- Detailed Breakdown Table -->
+        <div class="card" style="margin-top:24px;">
+          <h3 class="card-title">Matrice Comparative Détaillée 2026</h3>
+          <div class="table-container">
+            <table class="comp-table">
+              <thead>
+                <tr>
+                  <th>Critère</th>
+                  <th>Micro-Entreprise</th>
+                  <th>EURL à l'IS</th>
+                  <th>SASU à l'IS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Chiffre d'Affaires HT</strong></td>
+                  <td id="tblMicroCA">-</td>
+                  <td id="tblEurlCA">-</td>
+                  <td id="tblSasuCA">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Déduction Frais Réels</strong></td>
+                  <td>Non (forfait 34%)</td>
+                  <td style="color:var(--emerald); font-weight:600;" id="tblEurlFrais">Oui (intégralité)</td>
+                  <td style="color:var(--emerald); font-weight:600;" id="tblSasuFrais">Oui (intégralité)</td>
+                </tr>
+                <tr>
+                  <td><strong>Cotisations Sociales</strong></td>
+                  <td id="tblMicroCotis">21.1% du CA</td>
+                  <td id="tblEurlCotis">~45% du net</td>
+                  <td id="tblSasuCotis">0% (div.) ou ~78% (sal.)</td>
+                </tr>
+                <tr>
+                  <td><strong>Impôt (Société + IR)</strong></td>
+                  <td id="tblMicroTax">-</td>
+                  <td id="tblEurlTax">-</td>
+                  <td id="tblSasuTax">-</td>
+                </tr>
+                <tr>
+                  <td><strong>Maintien ARE (Chômage)</strong></td>
+                  <td>Partiel (déduit selon CA)</td>
+                  <td>Déduit si rémunération</td>
+                  <td style="color:var(--emerald); font-weight:700;">100% possible si 0€ salaire</td>
+                </tr>
+                <tr>
+                  <td><strong>Validation Retraite</strong></td>
+                  <td>Trimestres selon CA</td>
+                  <td style="color:var(--emerald);">4 trimestres garantis</td>
+                  <td id="tblSasuRetraite">0 si 100% dividendes</td>
+                </tr>
+                <tr>
+                  <td><strong>Coût Expert-Comptable</strong></td>
+                  <td style="color:var(--emerald); font-weight:700;">0 € / an</td>
+                  <td id="tblEurlCompta">~ 2 000 € / an</td>
+                  <td id="tblSasuCompta">~ 2 000 € / an</td>
+                </tr>
+                <tr style="background:var(--primary-light);">
+                  <td><strong>REVENU NET DANS LA POCHE</strong></td>
+                  <td class="highlight-net" id="tblMicroFinal">-</td>
+                  <td class="highlight-net" id="tblEurlFinal">-</td>
+                  <td class="highlight-net" id="tblSasuFinal">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Factur-X Section: 2026 E-Invoicing Reform -->
+    <section class="facturx-box" id="facturx-section">
+      <div class="facturx-badge">🚀 RÉFORME LÉGALE 1ER SEPTEMBRE 2026</div>
+      <h2 style="font-size: 1.8rem; font-weight:800; color:white; margin-bottom:10px;">
+        Êtes-vous prêt pour la facturation électronique Factur-X obligatoire ?
+      </h2>
+      <p style="color:#94a3b8; font-size:1rem; max-width:850px;">
+        En application de l'ordonnance n° 2021-1190 et de la loi de finances, <strong>dès le 1er septembre 2026</strong>, toute entreprise ou freelance français doit obligatoirement être en capacité de <strong>recevoir des factures électroniques structurées</strong> (Factur-X / CII / UBL). Vérifiez votre conformité en 30 secondes :
+      </p>
+
+      <div class="checklist-grid">
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <div>
+            <strong style="color:white; display:block; margin-bottom:4px;">1. SIREN Client Obligatoire</strong>
+            <span style="font-size:0.85rem; color:#94a3b8;">Le SIREN à 9 chiffres de vos clients B2B doit figurer systématiquement sur chaque facture émise.</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <div>
+            <strong style="color:white; display:block; margin-bottom:4px;">2. Nature de l'opération</strong>
+            <span style="font-size:0.85rem; color:#94a3b8;">Mention explicite « Prestations de services » ou « Ventes de biens » ou mixte avec catégorie d'encaissement.</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <div>
+            <strong style="color:white; display:block; margin-bottom:4px;">3. Format Hybride PDF/A-3</strong>
+            <span style="font-size:0.85rem; color:#94a3b8;">Vos factures doivent embarquer un flux XML normalisé EN 16931 lisible par machine par le Portail Public (PPF) ou votre PDP.</span>
+          </div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <div>
+            <strong style="color:white; display:block; margin-bottom:4px;">4. Clause Factur-X au contrat</strong>
+            <span style="font-size:0.85rem; color:#94a3b8;">Mise à jour des CGV et contrats de prestation pour notifier l'acceptation des flux dématérialisés et délais LME.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <button class="btn btn-secondary" onclick="generateFacturxSample()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Voir le Modèle de Facture Conforme Factur-X 2026
+        </button>
+        <span style="font-size:0.85rem; color:#94a3b8;">Inclus avec toutes les mentions légales obligatoires 2026.</span>
+      </div>
+    </section>
+
+    <!-- Cross-Sell Banner: EU AI Act Compliance Toolkit -->
+    <section class="ai-act-banner">
+      <div class="ai-act-text">
+        <h3>🤖 Vous développez des solutions IA, LLM ou data pour vos clients ?</h3>
+        <p>L'<strong>EU AI Act</strong> est entré en vigueur avec des sanctions jusqu'à 35 000 000 €. Vérifiez si vos missions, prompts et API respectent les obligations de transparence, classification de risque (Annexe III) et gouvernance.</p>
+      </div>
+      <div>
+        <a href="https://eroniichan.github.io/eu-ai-act-compliance-toolkit/" target="_blank" rel="noopener" class="btn btn-primary" style="background:#7c3aed; white-space:nowrap; padding:12px 20px;">
+          Lancer l'Audit EU AI Act 2026 →
+        </a>
+      </div>
+    </section>
+
+    <!-- Upsell Section: €9 Pack Contrats & CGV Freelance 2026 -->
+    <section class="upsell-section" id="pack-contrats">
+      <div class="upsell-badge-pill">🔥 OFFRE SPÉCIALE FREELANCE 2026</div>
+      <h2 class="upsell-title">Pack Juridique Freelance Tech & CGV 2026</h2>
+      <p class="upsell-sub">
+        Ne travaillez plus sans filet juridique. 5 modèles de contrats rédigés par des juristes spécialisés tech, prêts à personnaliser (Word, Markdown, PDF) et mis à jour pour les réformes 2026.
+      </p>
+
+      <div class="contracts-grid">
+        <div class="contract-card">
+          <h4>1. Contrat de Prestation Tech</h4>
+          <p>Obligation de moyens, forfait/régie, protection anti-requalification en salariat déguisé et pénalités LME.</p>
+        </div>
+        <div class="contract-card">
+          <h4>2. CGV Freelance 2026</h4>
+          <p>Clause de réserve de propriété des codes sources jusqu'au paiement complet, délais de recette et refus.</p>
+        </div>
+        <div class="contract-card">
+          <h4>3. Cession Droits d'Auteur (IP)</h4>
+          <p>Clause de cession de propriété intellectuelle protectrice : aucun transfert de droits en cas d'impayé.</p>
+        </div>
+        <div class="contract-card">
+          <h4>4. Clause Factur-X & E-invoicing</h4>
+          <p>Annexe contractuelle obligatoire pour le basculement PDP/PPF et transmission électronique 2026.</p>
+        </div>
+        <div class="contract-card">
+          <h4>5. Accord RGPD Sous-traitant</h4>
+          <p>Article 28 du RGPD conforme pour les missions d'accès aux bases de données et serveurs clients.</p>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <span class="price-original">149 €</span>
+        <span class="price-deal">9 €</span>
+        <span class="price-tag">TTC (Accès à vie & Mises à jour 2026)</span>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:10px;">
+        <button class="btn btn-gold" style="font-size:1.15rem; padding:16px 36px;" onclick="openPackModal()">
+          ⚡ Télécharger le Pack Contrats Immédiatement (9 €)
+        </button>
+        <button class="btn btn-secondary" onclick="previewSampleContract()">
+          Aperçu d'une clause exemple
+        </button>
+      </div>
+
+      <div style="margin-top:20px; font-size:0.85rem; color:#94a3b8; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+        <span>🔒 Paiement sécurisé par Stripe / Carte Bancaire</span>
+        <span>⚡ Téléchargement instantané (ZIP + Notion + Word)</span>
+        <span>🛡️ Garantie 30 jours Satisfait ou Remboursé</span>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:20px; text-align:center;">Foire Aux Questions Freelance 2026</h2>
+      
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Quand faut-il quitter la Micro-Entreprise pour créer une EURL ou SASU ?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Dès que votre chiffre d'affaires dépasse le plafond de 77 700 € HT deux années consécutives, la sortie est obligatoire. De plus, dès 60 000 € de CA si vous avez des frais professionnels réels importants (matériel, loyer, sous-traitance, voyages), l'EURL ou la SASU devient fiscalement bien plus rentable car vous pouvez déduire 100% de vos dépenses réelles, contrairement à la micro-entreprise où l'Urssaf taxe le chiffre d'affaires brut sans aucune déduction.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Pourquoi l'EURL à l'IS offre-t-elle souvent plus de net que la SASU ?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          En EURL, le gérant majoritaire relève du statut Travailleur Non Salarié (TNS - Sécurité Sociale des Indépendants). Le taux de cotisations sociales est d'environ 43% à 45% du salaire net. En revanche, en SASU, le président est assimilé salarié au régime général, où les cotisations sociales représentent 75% à 80% du net. À budget égal, l'EURL génère donc généralement 15% à 25% de revenu net supplémentaire dans votre poche.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Dans quel cas précis choisir une SASU en 2026 ?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          La SASU est idéale dans deux cas majeurs : 1) Si vous touchez l'ARE (chômage France Travail) : en décidant de vous verser 0 € de salaire, vous conservez 100% de vos allocations chômage mensuelles tout en facturant vos clients. 2) Si vous souhaitez vous rémunérer à 100% en dividendes imposés à la Flat Tax (30%) sans cotisations Urssaf minimales (si vous avez déjà une couverture santé par ailleurs).
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Quelles sont les mentions obligatoires Factur-X 2026 sur un devis ou facture ?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          À partir du 1er septembre 2026, la facture doit obligatoirement comporter : le numéro SIREN du client (9 chiffres), l'adresse de livraison du bien ou d'exécution du service si différente de l'adresse de facturation, la nature de l'opération (prestation de services ou vente), et la mention d'option pour le paiement de la TVA d'après les débits.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Qu'est-ce que le versement libératoire de l'impôt sur le revenu en micro ?</span>
+          <span class="faq-toggle-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Le versement libératoire permet de régler votre impôt sur le revenu chaque mois ou trimestre en même temps que vos cotisations Urssaf, à un taux forfaitaire de 2,2% du chiffre d'affaires pour les prestations BNC. Pour en bénéficier en 2026, votre revenu fiscal de référence (RFR) de l'année N-2 ne doit pas dépasser le plafond légal (environ 28 797 € par part).
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Checkout / Lead Modal -->
+  <div class="modal-backdrop" id="packModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closePackModal()">&times;</button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <span class="badge-rec" style="background:#6366f1;">ACCÈS INSTANTANÉ</span>
+        <h3 style="font-size:1.6rem; font-weight:800; margin-top:8px;">Pack Contrats Freelance & CGV 2026</h3>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Recevez immédiatement les 5 contrats juridiques rédigés par nos juristes partenaires.</p>
+      </div>
+
+      <div style="background:var(--card-border); border-radius:8px; padding:16px; margin-bottom:20px;">
+        <ul style="list-style:none; font-size:0.88rem;">
+          <li style="margin-bottom:8px;">✅ <strong>Contrat de Prestation Tech & Régie/Forfait</strong> (anti-requalification)</li>
+          <li style="margin-bottom:8px;">✅ <strong>CGV B2B 2026</strong> avec clause de réserve de propriété source code</li>
+          <li style="margin-bottom:8px;">✅ <strong>Cession de Droits d'Auteur (IP)</strong> conditionnée au paiement</li>
+          <li style="margin-bottom:8px;">✅ <strong>Avenant Réforme Factur-X 2026</strong> & flux électroniques</li>
+          <li>✅ <strong>Accord Sous-traitant RGPD</strong> Article 28</li>
+        </ul>
+      </div>
+
+      <form id="checkoutForm" onsubmit="handleCheckout(event)">
+        <div class="input-group">
+          <label class="input-label" for="userEmail">Votre adresse email professionnelle :</label>
+          <input type="email" id="userEmail" required placeholder="nom@freelance-tech.fr" style="margin-top:6px;">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="statutChoice">Votre statut actuel ou envisagé :</label>
+          <select id="statutChoice" style="margin-top:6px;">
+            <option value="micro">Micro-Entreprise (Auto-entrepreneur)</option>
+            <option value="eurl">EURL / SARL unipersonnelle</option>
+            <option value="sasu">SASU / SAS</option>
+            <option value="creation">En cours de création / transition</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:1.1rem; justify-content:center;">
+          Procéder au règlement sécurisé (9,00 € TTC) →
+        </button>
+      </form>
+
+      <div style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:14px;">
+        Paiement chiffré 256 bits via Stripe. Facture avec TVA déductible émise automatiquement.
+      </div>
+    </div>
+  </div>
+
+  <!-- Factur-X Sample Modal -->
+  <div class="modal-backdrop" id="facturxModal">
+    <div class="modal-box" style="max-width:750px;">
+      <button class="modal-close" onclick="closeFacturxModal()">&times;</button>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:8px;">Modèle de Facture Conforme Factur-X 2026</h3>
+      <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">
+        Structure conforme au profil <em>Factur-X BASIC / EN 16931</em> avec toutes les mentions obligatoires DGFIP 2026.
+      </p>
+
+      <div id="facturxPreviewContent" style="background:white; color:#0f172a; padding:20px; border-radius:8px; font-size:0.82rem; font-family:monospace; max-height:400px; overflow-y:auto; border:1px solid #cbd5e1;">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+        <button class="btn btn-secondary" onclick="closeFacturxModal()">Fermer</button>
+        <button class="btn btn-primary" onclick="window.print()">Imprimer cette Facture Modèle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contract Preview Modal -->
+  <div class="modal-backdrop" id="contractPreviewModal">
+    <div class="modal-box" style="max-width:700px;">
+      <button class="modal-close" onclick="closeContractModal()">&times;</button>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:8px;">Extrait du Pack Contrats : Clause Propriété Intellectuelle (IP)</h3>
+      <div style="background:var(--card-border); padding:16px; border-radius:8px; font-size:0.85rem; line-height:1.5; margin:16px 0; max-height:360px; overflow-y:auto;">
+        <p><strong>ARTICLE 8 — CESSION CONDITIONNELLE DES DROITS D'AUTEUR & CODE SOURCE</strong></p>
+        <p style="margin-top:8px;">
+          <em>8.1. Réserve expresse de propriété intellectuelle :</em> Conformément aux dispositions des articles L. 111-1 et suivants du Code de la propriété intellectuelle, le Prestataire demeure seul et unique titulaire de l'ensemble des droits moraux et patrimoniaux attachés aux développements logiciels, architectures, algorithmes, documentations et créations réalisés dans le cadre de la Mission.
+        </p>
+        <p style="margin-top:8px;">
+          <em>8.2. Condition suspensive de paiement intégral :</em> La cession au Client des droits patrimoniaux d'exploitation (reproduction, adaptation, représentation) sur les livrables spécifiquement commandés est expressément subordonnée au <strong>paiement effectif et intégral de la totalité du prix convenu</strong> (principal, taxes et éventuelles pénalités de retard). Tout usage, déploiement en production ou exploitation des livrables préalablement au parfait paiement constituera une contrefaçon passible des sanctions prévues aux articles L. 335-2 et suivants du CPI.
+        </p>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.85rem; color:var(--text-muted);">4 autres contrats complets inclus dans le pack.</span>
+        <button class="btn btn-gold" onclick="closeContractModal(); openPackModal();">Acheter le Pack Complet (9 €)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong style="color:var(--text); font-size:1rem; display:block; margin-bottom:8px;">Simulateur TJM 2026 Freelance & Factur-X</strong>
+          <p style="font-size:0.85rem; max-width:480px;">
+            Outil indépendant d'estimation financière et fiscale pour indépendants, développeurs, consultants IT et créateurs d'entreprise en France. Mis à jour avec les barèmes fiscaux et taux Urssaf 2026.
+          </p>
+        </div>
+        <div>
+          <strong style="color:var(--text); font-size:0.9rem; display:block; margin-bottom:12px;">Ressources & Guides</strong>
+          <ul class="footer-links">
+            <li><a href="#facturx-section">Guide Factur-X 2026</a></li>
+            <li><a href="#pack-contrats">Pack Contrats Freelance (9 €)</a></li>
+            <li><a href="https://eroniichan.github.io/eu-ai-act-compliance-toolkit/" target="_blank" rel="noopener">EU AI Act Toolkit 2026 ↗</a></li>
+            <li><a href="https://github.com/EroNiiChan/simulateur-tjm-statut-2026" target="_blank" rel="noopener">Code Source GitHub ↗</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color:var(--text); font-size:0.9rem; display:block; margin-bottom:12px;">Mentions Légales</strong>
+          <p style="font-size:0.8rem; line-height:1.4;">
+            Ce simulateur fournit des estimations basées sur la législation française 2026. Il ne remplace pas les conseils d'un expert-comptable ou d'un avocat spécialisé.
+          </p>
+          <div style="margin-top:10px; font-size:0.75rem;">
+            © 2026 EroNiiChan. Tous droits réservés.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // Formatting Helpers
+    const formatEUR = (num) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(num));
+    const formatPct = (num) => new Intl.NumberFormat('fr-FR', { style: 'percent', maximumFractionDigits: 1 }).format(num);
+
+    // Main Calculation Function
+    function updateCalculations() {
+      // 1. Get input values
+      const tjm = parseFloat(document.getElementById('tjmInput').value);
+      const days = parseFloat(document.getElementById('daysInput').value);
+      const frais = parseFloat(document.getElementById('fraisInput').value);
+      const areChecked = document.getElementById('areCheck').checked;
+      const areAmount = parseFloat(document.getElementById('areAmountInput').value);
+      const acreChecked = document.getElementById('acreCheck').checked;
+      const versLibChecked = document.getElementById('versLibCheck').checked;
+      const tmi = parseFloat(document.getElementById('tmiSelect').value) / 100;
+      const fraisCompta = parseFloat(document.getElementById('comptaInput').value);
+
+      // Display updated values in labels
+      document.getElementById('tjmDisplay').innerText = formatEUR(tjm);
+      document.getElementById('daysDisplay').innerText = `${days} j`;
+      document.getElementById('fraisDisplay').innerText = formatEUR(frais);
+      document.getElementById('areAmountDisplay').innerText = formatEUR(areAmount);
+      document.getElementById('areAmountGroup').style.display = areChecked ? 'block' : 'none';
+
+      // 2. Chiffre d'Affaires Brut
+      const totalCA = tjm * days;
+      document.getElementById('totalCADisplay').innerText = formatEUR(totalCA);
+
+      const seuilMicro = 77700;
+      const isMicroDepasse = totalCA > seuilMicro;
+      document.getElementById('seuilMicroAlert').style.display = isMicroDepasse ? 'block' : 'none';
+      document.getElementById('badgeMicroPlafond').style.display = isMicroDepasse ? 'inline-block' : 'none';
+
+      // ==========================================
+      // RÉGIME 1 : MICRO-ENTREPRISE (BNC)
+      // ==========================================
+      // Cotisations Urssaf : ~21.1% BNC (ACRE: 10.6%)
+      const tauxUrssafMicro = acreChecked ? 0.108 : 0.214;
+      const microCotisations = totalCA * tauxUrssafMicro;
+
+      // IR en Micro :
+      let microIR = 0;
+      if (versLibChecked) {
+        // Versement libératoire 2.2% du CA
+        microIR = totalCA * 0.022;
+      } else {
+        // Abattement forfaitaire de 34% (assiette = 66% du CA)
+        const assietteIR = totalCA * 0.66;
+        microIR = assietteIR * tmi;
+      }
+
+      // En micro, les frais réels ne sont PAS déductibles, ils sortent de la poche
+      const microNetAnnuel = Math.max(0, totalCA - microCotisations - frais - microIR);
+      const microNetMensuel = microNetAnnuel / 12;
+
+      // ==========================================
+      // RÉGIME 2 : EURL À L'IS (GÉRANT TNS)
+      // ==========================================
+      // Frais réels déductibles + compta
+      const totalFraisEURL = frais + fraisCompta;
+      const margeEURL = Math.max(0, totalCA - totalFraisEURL);
+
+      // En EURL TNS : charges sociales = ~45% du net (soit salaire_net = marge / 1.45)
+      // Si ACRE activée première année : allègement charges ~25%
+      const coefChargesTNS = acreChecked ? 1.25 : 1.45;
+      const eurlRemuNette = margeEURL / coefChargesTNS;
+      const eurlCotisations = margeEURL - eurlRemuNette;
+
+      // IR sur rémunération de gérance après abattement standard 10% frais pro
+      const eurlAssietteIR = eurlRemuNette * 0.90;
+      const eurlIR = eurlAssietteIR * tmi;
+
+      const eurlNetAnnuel = Math.max(0, eurlRemuNette - eurlIR);
+      const eurlNetMensuel = eurlNetAnnuel / 12;
+
+      // ==========================================
+      // RÉGIME 3 : SASU À L'IS (DIVIDENDES / ARE)
+      // ==========================================
+      const totalFraisSASU = frais + fraisCompta;
+      const resultatAvantIS = Math.max(0, totalCA - totalFraisSASU);
+
+      // Calcul IS 2026 : 15% jusqu'à 42 500 €, puis 25% au-delà
+      let sasuIS = 0;
+      if (resultatAvantIS <= 42500) {
+        sasuIS = resultatAvantIS * 0.15;
+      } else {
+        sasuIS = (42500 * 0.15) + ((resultatAvantIS - 42500) * 0.25);
+      }
+
+      const beneficeApresIS = Math.max(0, resultatAvantIS - sasuIS);
+      // Distribution intégrale dividendes soumise à la Flat Tax 30% (PFU)
+      const sasuFlatTax = beneficeApresIS * 0.30;
+      let sasuNetAnnuel = beneficeApresIS - sasuFlatTax;
+
+      // Si ARE activée : maintien 100% du chômage annuel en cash
+      if (areChecked) {
+        const annualARE = areAmount * 12;
+        sasuNetAnnuel += annualARE;
+      }
+      const sasuNetMensuel = sasuNetAnnuel / 12;
+
+      // ==========================================
+      // DOM UPDATES
+      // ==========================================
+      // Micro
+      document.getElementById('microNetMonthly').innerText = formatEUR(microNetMensuel);
+      document.getElementById('microNetAnnual').innerText = formatEUR(microNetAnnuel);
+      document.getElementById('microUrssaf').innerText = formatEUR(microCotisations);
+      document.getElementById('microIR').innerText = formatEUR(microIR);
+
+      // EURL
+      document.getElementById('eurlNetMonthly').innerText = formatEUR(eurlNetMensuel);
+      document.getElementById('eurlNetAnnual').innerText = formatEUR(eurlNetAnnuel);
+      document.getElementById('eurlUrssaf').innerText = formatEUR(eurlCotisations);
+      document.getElementById('eurlFraisTotal').innerText = `- ${formatEUR(totalFraisEURL)}`;
+      document.getElementById('eurlIR').innerText = formatEUR(eurlIR);
+
+      // SASU
+      document.getElementById('sasuNetMonthly').innerText = formatEUR(sasuNetMensuel);
+      document.getElementById('sasuNetAnnual').innerText = formatEUR(sasuNetAnnuel);
+      document.getElementById('sasuIS').innerText = formatEUR(sasuIS);
+      document.getElementById('sasuFlatTax').innerText = formatEUR(sasuFlatTax);
+
+      if (areChecked) {
+        document.getElementById('sasuBadgeLabel').style.display = 'inline-block';
+        document.getElementById('sasuBadgeLabel').innerText = '🔥 Recommandé ARE';
+        document.getElementById('sasuSubLabel').innerText = `Dividendes + ARE (+${formatEUR(areAmount*12)}/an)`;
+      } else {
+        document.getElementById('sasuBadgeLabel').style.display = 'none';
+        document.getElementById('sasuSubLabel').innerText = '100% Dividendes (Flat Tax 30%)';
+      }
+
+      // Recommendation Engine
+      const recBadge = document.getElementById('recommendationBadge');
+      const cardMicro = document.getElementById('cardMicro');
+      const cardEURL = document.getElementById('cardEURL');
+      const cardSASU = document.getElementById('cardSASU');
+
+      cardMicro.classList.remove('recommended');
+      cardEURL.classList.remove('recommended');
+      cardSASU.classList.remove('recommended');
+
+      if (areChecked) {
+        recBadge.innerText = 'SASU (Maintien Chômage 100%)';
+        recBadge.style.background = 'var(--purple)';
+        cardSASU.classList.add('recommended');
+      } else if (!isMicroDepasse && (microNetAnnuel > eurlNetAnnuel) && (frais < 4000)) {
+        recBadge.innerText = 'Micro-Entreprise (Simplicité & 0€ compta)';
+        recBadge.style.background = 'var(--primary)';
+        cardMicro.classList.add('recommended');
+      } else {
+        recBadge.innerText = 'EURL à l\'IS (Rémunération Optimale)';
+        recBadge.style.background = 'var(--emerald)';
+        cardEURL.classList.add('recommended');
+      }
+
+      // Visual Bar Charts
+      const pctMicro = Math.min(100, Math.max(5, (microNetAnnuel / totalCA) * 100));
+      const pctEURL = Math.min(100, Math.max(5, (eurlNetAnnuel / totalCA) * 100));
+      const pctSASU = Math.min(100, Math.max(5, (sasuNetAnnuel / totalCA) * 100));
+
+      document.getElementById('barMicroNet').style.width = `${pctMicro}%`;
+      document.getElementById('barMicroTaxes').style.width = `${100 - pctMicro}%`;
+      document.getElementById('barLabelMicro').innerText = `Net dans la poche: ${formatEUR(microNetAnnuel)} (${Math.round(pctMicro)}%)`;
+
+      document.getElementById('barEURLNet').style.width = `${pctEURL}%`;
+      document.getElementById('barEURLTaxes').style.width = `${100 - pctEURL}%`;
+      document.getElementById('barLabelEURL').innerText = `Net dans la poche: ${formatEUR(eurlNetAnnuel)} (${Math.round(pctEURL)}%)`;
+
+      document.getElementById('barSASUNet').style.width = `${pctSASU}%`;
+      document.getElementById('barSASUTaxes').style.width = `${100 - pctSASU}%`;
+      document.getElementById('barLabelSASU').innerText = `Net dans la poche: ${formatEUR(sasuNetAnnuel)} (${Math.round(pctSASU)}%)`;
+
+      // Matrix Table
+      document.getElementById('tblMicroCA').innerText = formatEUR(totalCA);
+      document.getElementById('tblEurlCA').innerText = formatEUR(totalCA);
+      document.getElementById('tblSasuCA').innerText = formatEUR(totalCA);
+
+      document.getElementById('tblMicroCotis').innerText = `${formatEUR(microCotisations)} (${Math.round(tauxUrssafMicro*100)}%)`;
+      document.getElementById('tblEurlCotis').innerText = `${formatEUR(eurlCotisations)} (TNS)`;
+      document.getElementById('tblSasuCotis').innerText = '0 € (si 100% div.)';
+
+      document.getElementById('tblMicroTax').innerText = `${formatEUR(microIR)} (IR)`;
+      document.getElementById('tblEurlTax').innerText = `${formatEUR(eurlIR)} (IR)`;
+      document.getElementById('tblSasuTax').innerText = `${formatEUR(sasuIS)} (IS) + ${formatEUR(sasuFlatTax)} (PFU)`;
+
+      document.getElementById('tblMicroFinal').innerText = `${formatEUR(microNetAnnuel)} / an (${formatEUR(microNetMensuel)}/m)`;
+      document.getElementById('tblEurlFinal').innerText = `${formatEUR(eurlNetAnnuel)} / an (${formatEUR(eurlNetMensuel)}/m)`;
+      document.getElementById('tblSasuFinal').innerText = `${formatEUR(sasuNetAnnuel)} / an (${formatEUR(sasuNetMensuel)}/m)`;
+
+      // Save user state in URL params without reload
+      const params = new URLSearchParams({ tjm, days, frais, are: areChecked ? '1' : '0', tmi: Math.round(tmi * 100) });
+      window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+    }
+
+    // Toggle helper for custom rows
+    function toggleCheckbox(id) {
+      const el = document.getElementById(id);
+      el.checked = !el.checked;
+      updateCalculations();
+    }
+
+    // Reset Defaults
+    function resetDefaults() {
+      document.getElementById('tjmInput').value = 550;
+      document.getElementById('daysInput').value = 210;
+      document.getElementById('fraisInput').value = 6000;
+      document.getElementById('areCheck').checked = false;
+      document.getElementById('acreCheck').checked = false;
+      document.getElementById('versLibCheck').checked = false;
+      document.getElementById('tmiSelect').value = "30";
+      document.getElementById('comptaInput').value = "2000";
+      updateCalculations();
+    }
+
+    // Theme Toggle
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      document.getElementById('themeToggleBtn').innerText = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme_freelance_sim', newTheme);
+    }
+
+    // Load URL params on start
+    function initParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('tjm')) document.getElementById('tjmInput').value = urlParams.get('tjm');
+      if (urlParams.has('days')) document.getElementById('daysInput').value = urlParams.get('days');
+      if (urlParams.has('frais')) document.getElementById('fraisInput').value = urlParams.get('frais');
+      if (urlParams.has('are')) document.getElementById('areCheck').checked = urlParams.get('are') === '1';
+      if (urlParams.has('tmi')) document.getElementById('tmiSelect').value = urlParams.get('tmi');
+
+      const savedTheme = localStorage.getItem('theme_freelance_sim');
+      if (savedTheme) {
+        document.body.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeToggleBtn').innerText = savedTheme === 'dark' ? '🌙' : '☀️';
+      }
+
+      updateCalculations();
+    }
+
+    // Modals
+    function openPackModal() {
+      document.getElementById('packModal').style.display = 'flex';
+    }
+    function closePackModal() {
+      document.getElementById('packModal').style.display = 'none';
+    }
+
+    function previewSampleContract() {
+      document.getElementById('contractPreviewModal').style.display = 'flex';
+    }
+    function closeContractModal() {
+      document.getElementById('contractPreviewModal').style.display = 'none';
+    }
+
+    function openFacturxModal() {
+      document.getElementById('facturxModal').style.display = 'flex';
+    }
+    function closeFacturxModal() {
+      document.getElementById('facturxModal').style.display = 'none';
+    }
+
+    // FAQ Accordion
+    function toggleFaq(item) {
+      item.classList.toggle('active');
+    }
+
+    // Print / PDF Export
+    function exportReport() {
+      window.print();
+    }
+
+    // Checkout Form Handler (Stripe / Gumroad trigger simulator)
+    function handleCheckout(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value;
+      const statut = document.getElementById('statutChoice').value;
+
+      // Provide instant confirmation & simulate payment dispatch
+      alert(`Merci ! Redirection vers la passerelle sécurisée Stripe pour l'adresse ${email}.\nVotre Pack Contrats & CGV Freelance 2026 sera téléchargeable dès validation.`);
+      closePackModal();
+    }
+
+    // Generate Factur-X Sample Invoice Preview
+    function generateFacturxSample() {
+      const tjm = document.getElementById('tjmInput').value;
+      const html = `
+        <div style="border-bottom:2px solid #0f172a; padding-bottom:12px; margin-bottom:12px; display:flex; justify-content:space-between;">
+          <div>
+            <h2 style="margin:0; font-size:1.1rem; color:#0f172a;">FACTURE N° 2026-09-001</h2>
+            <p style="margin:4px 0 0; color:#475569;">Date d'émission : 01/09/2026 | Échéance : 30/09/2026 (30 jours)</p>
+            <span style="display:inline-block; background:#0284c7; color:white; font-size:0.65rem; font-weight:bold; padding:2px 6px; border-radius:4px; margin-top:4px;">PROFIL FACTUR-X : BASIC (EN 16931)</span>
+          </div>
+          <div style="text-align:right;">
+            <strong style="font-size:0.95rem;">PRESTATAIRE FREELANCE TECH</strong><br>
+            SIRET : 894 123 456 00012<br>
+            TVA Intra : FR 34 894123456<br>
+            Adresse : 12 rue de la Tech, 75011 Paris<br>
+            Plateforme PDP connectée : PPF / Chorus Pro
+          </div>
+        </div>
+
+        <div style="background:#f1f5f9; padding:10px; border-radius:6px; margin-bottom:12px; display:flex; justify-content:space-between;">
+          <div>
+            <strong>CLIENT (DESTINATAIRE B2B) :</strong><br>
+            TECH CORP SAS<br>
+            <strong>SIREN OBLIGATOIRE 2026 : 412 345 678</strong><br>
+            TVA : FR 12 412345678<br>
+            Lieu d'exécution de la mission : Télétravail / 75008 Paris
+          </div>
+          <div>
+            <strong>MENTIONS LÉGALES OBLIGATOIRES 2026 :</strong><br>
+            Nature de l'opération : <strong>Prestations de services</strong><br>
+            Option TVA : Paiement d'après les débits<br>
+            Format d'échange : Hybride PDF/A-3 (XML embedded)
+          </div>
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; margin-bottom:12px; font-size:0.8rem;">
+          <thead>
+            <tr style="background:#e2e8f0; text-align:left;">
+              <th style="padding:6px;">Désignation de la prestation</th>
+              <th style="padding:6px; text-align:center;">Unité</th>
+              <th style="padding:6px; text-align:right;">Prix Unit. HT</th>
+              <th style="padding:6px; text-align:right;">Total HT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:6px; border-bottom:1px solid #e2e8f0;">Mission Conseil Architecture Cloud & IA (Septembre 2026)</td>
+              <td style="padding:6px; text-align:center; border-bottom:1px solid #e2e8f0;">18 jours</td>
+              <td style="padding:6px; text-align:right; border-bottom:1px solid #e2e8f0;">${tjm} €</td>
+              <td style="padding:6px; text-align:right; border-bottom:1px solid #e2e8f0;">${(tjm * 18).toLocaleString('fr-FR')} €</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <div style="width:260px; line-height:1.6;">
+            <div style="display:flex; justify-content:space-between;"><span>Total HT :</span><strong>${(tjm * 18).toLocaleString('fr-FR')} €</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span>TVA (20,0%) :</span><span>${(tjm * 18 * 0.20).toLocaleString('fr-FR')} €</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:1rem; border-top:2px solid #0f172a; padding-top:4px;"><span>Total TTC :</span><strong>${(tjm * 18 * 1.20).toLocaleString('fr-FR')} €</strong></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; font-size:0.7rem; color:#64748b; border-top:1px dashed #cbd5e1; padding-top:8px;">
+          Pénalités de retard : 3 fois le taux d'intérêt légal. Indemnité forfaitaire de recouvrement : 40 € (Code de commerce art. L. 441-10). Métadonnées structurées XML incluses dans le PDF/A-3 conformément à la norme européenne EN 16931.
+        </div>
+      `;
+      document.getElementById('facturxPreviewContent').innerHTML = html;
+      openFacturxModal();
+    }
+
+    // Initialize on window load
+    window.addEventListener('DOMContentLoaded', initParams);
+  </script>
+</body>
+</html>
